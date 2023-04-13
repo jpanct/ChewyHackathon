@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import CLINIC_INFO from "./clinic-info.json"
+
+const getFilteredItems = (query, items) => {
+  if(!query){
+    return;
+  }
+  return CLINIC_INFO;
+  // return item.filter((clinic) => )
+}
+
 
 function App() {
+const [query, setQuery] = useState("");
+
+const { clinics } = CLINIC_INFO;
+const { current_clinic } = clinics;
+
+const filteredItems = getFilteredItems(query,items);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label>Search</>
+      <input type = "text" onChange = {(e) => setQuery(e.target.value)}/>
+      <ul>
+        {filteredItems}
+      </ul>
     </div>
   );
 }

@@ -1,0 +1,32 @@
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+main {
+    position: relative; /* Set position to relative for the container */
+    width: 100%;
+    height: 100vh;
+    background-color: #2349BB;
+    background-size: cover;
+}
+
+.mainlogo {
+    display: block;
+    width: 25%;
+    height: auto;
+    top: 10%;
+  }
+
+.sublogo{
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    top: 10%;
+
+}
+
+.SearchContainer{
+    background-color:blueviolet;
+}

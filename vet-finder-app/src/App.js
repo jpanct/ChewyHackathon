@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Welcome from './script/welcome';
-
+import Filter from './script/filter';
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path="/" element = {<Welcome />} />
+      <Route path="/filter" element = {<Filter />} />
       </Routes>
     </BrowserRouter>
   );

@@ -11,7 +11,7 @@ const Search = () =>{
   
       setClinics(filtered_clinics);
     }
-  
+
     return (
       <div className="App">
         <label>Search</label>

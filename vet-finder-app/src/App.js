@@ -1,30 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
-import CLINIC_INFO from "./clinic-info.json"
-
-const getFilteredItems = (query, items) => {
-  if(!query){
-    return;
-  }
-  return CLINIC_INFO;
-  // return item.filter((clinic) => )
-}
+import { clinicData } from './clinic-info';
 
 
 function App() {
-const [query, setQuery] = useState("");
+  const [clinics, setClinics] = useState(clinicData);
 
-const { clinics } = CLINIC_INFO;
-const { current_clinic } = clinics;
+  const filter_clinics = (e)=>{
+    const query = e.target.value.toLowerCase();
+    const filtered_clinics = clinicData.filter((clinic) => clinic.clinic_name.toLowerCase().includes(query))
 
-const filteredItems = getFilteredItems(query,items);
+    setClinics(filtered_clinics);
+    
+  }
+
   return (
     <div className="App">
-      <label>Search</>
-      <input type = "text" onChange = {(e) => setQuery(e.target.value)}/>
+      <label>Search</label>
+      <input type="text" onChange={(e) => filter_clinics(e)}/>
       <ul>
-        {filteredItems}
+        {clinics.map((data) => {
+          return <h1 key = {data.clinic_name}> {data.clinic_name}</h1>
+        })}
       </ul>
     </div>
   );

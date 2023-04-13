@@ -1,4 +1,4 @@
-[
+export const clinicData = [
    {
       "clinic_name": "MASSACHUSETTS VET MEDICAL ASSN",
       "address1": "163 LAKESIDE AVE",
@@ -21734,4 +21734,4 @@
       ],
       "categories": []
    }
-]
+];

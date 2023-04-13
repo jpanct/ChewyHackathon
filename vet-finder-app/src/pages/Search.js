@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { clinicData } from './clinic-info';
+import { clinicData } from '../clinic-info';
+import React from 'react';
 
 const Search = () =>{
     const [clinics, setClinics] = useState(clinicData);
@@ -23,3 +24,5 @@ const Search = () =>{
       </div>
     );
 }
+
+export default Search;

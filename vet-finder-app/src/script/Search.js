@@ -95,7 +95,6 @@ const Search = () => {
                       <SearchIconWrapper>
                         <SearchIcon style={{ color: "#2349BB" }} />
                       </SearchIconWrapper>
-                      
                       <StyledInputBase
                         placeholder="Your current location"
                         inputProps={{ 'aria-label': 'search' }}

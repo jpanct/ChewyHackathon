@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element = {<Search />} />
         <Route path="/welcome" element = {<Welcome />} />
         <Route path="/filter" element = {<Filter />} />
-        <Route path = '/map' map = {<Map />}/>
+        <Route path = '/map' element = {<Map />}/>
       </Routes>
     </BrowserRouter>
   );

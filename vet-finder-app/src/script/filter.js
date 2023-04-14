@@ -46,7 +46,17 @@ function Filter(){
         { text: 'Neurology', isClicked: false },
         { text: 'Dermatology', isClicked: false },
         { text: 'Radiology', isClicked: false },
-      ]);
+    ]);
+
+    const [serviceData, setServiceData] = useState([
+        { text: 'Televet', isClicked: false },
+        { text: 'Practice Hub', isClicked: false }
+    ]);
+
+    const [moreData, setMoreData] = useState([
+        { text: 'Insurance Accepted', isClicked: false },
+        { text: 'Emergency Visit', isClicked: false }
+    ]);
     
 
     const buttonClass = isClicked ? style.buttonClicked : style.buttonUnclicked;
@@ -95,6 +105,48 @@ function Filter(){
                             const updatedButtonsData = [...buttonsData]; // Make a copy of the array
                             updatedButtonsData[index].isClicked = !updatedButtonsData[index].isClicked; // Toggle the isClicked state for the clicked button
                             setButtonsData(updatedButtonsData); // Update the state variable with the new array
+                        }}
+                        style={{ display: 'flex', alignItems: 'center' }}
+                        >
+                        {button.isClicked && <CheckIcon fontSize="small" />}
+                        {button.text}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div className={style.chewyServices}>
+                <p> Chewy Services </p>
+                <div className={style.buttonContainer2}>
+                    {serviceData.map((button, index) => (
+                        <button
+                        key={index}
+                        className={button.isClicked ? style.buttonClicked : style.buttonUnclicked}
+                        onClick={() => {
+                            const updatedServiceData = [...serviceData]; // Make a copy of the array
+                            updatedServiceData[index].isClicked = !updatedServiceData[index].isClicked; // Toggle the isClicked state for the clicked button
+                            setServiceData(updatedServiceData); // Update the state variable with the new array
+                        }}
+                        style={{ display: 'flex', alignItems: 'center' }}
+                        >
+                        {button.isClicked && <CheckIcon fontSize="small" />}
+                        {button.text}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div className={style.chewyServices}>
+                <p> More Filters </p>
+                <div className={style.buttonContainer2}>
+                    {moreData.map((button, index) => (
+                        <button
+                        key={index}
+                        className={button.isClicked ? style.buttonClicked : style.buttonUnclicked}
+                        onClick={() => {
+                            const updatedMoreData = [...moreData]; // Make a copy of the array
+                            updatedMoreData[index].isClicked = !updatedMoreData[index].isClicked; // Toggle the isClicked state for the clicked button
+                            setMoreData(updatedMoreData); // Update the state variable with the new array
                         }}
                         style={{ display: 'flex', alignItems: 'center' }}
                         >

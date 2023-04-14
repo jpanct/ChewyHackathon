@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import * as React from 'react';
 import style from "../style/filter.module.css";
@@ -16,39 +16,42 @@ import fish from "../elements/fish.png"
 import fish2 from "../elements/fish2.png"
 import reptile from "../elements/reptile.png"
 import reptile2 from "../elements/reptile2.png"
+import pig from "../elements/pig.png"
+import pig2 from "../elements/pig2.png"
+import horse from "../elements/horse.png"
+import horse2 from "../elements/horse2.png"
+import CheckIcon from '@mui/icons-material/Check';
+
+
+
 
 function Filter(){
-    const [isDogClicked, setIsDogClicked] = useState(false);
-    const [isCatClicked, setIsCatClicked] = useState(false);
-    const [isSmallClicked, setIsSmallClicked] = useState(false);
-    const [isBirdClicked, setIsBirdClicked] = useState(false);
-    const [isFishClicked, setIsFishClicked] = useState(false);
-    const [isReptileClicked, setIsReptileClicked] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
+    const [petTypeData, setPetTypeData] = useState([
+        { label: 'Dogs', icon: { default: dog, clicked: dog2 }, clicked: false },
+        { label: 'Cats', icon: { default: cat, clicked: cat2 }, clicked: false },
+        { label: 'Small Animals', icon: { default: small, clicked: small2 }, clicked: false },
+        { label: 'Birds', icon: { default: bird, clicked: bird2 }, clicked: false },
+        { label: 'Fish', icon: { default: fish, clicked: fish2 }, clicked: false },
+        { label: 'Reptiles', icon: { default: reptile, clicked: reptile2 }, clicked: false },
+        { label: 'Farm Animals', icon: { default: pig, clicked: pig2 }, clicked: false },
+        { label: 'Horses', icon: { default: horse, clicked: horse2 }, clicked: false },
+    ]);
+
+      
+    const [buttonsData, setButtonsData] = useState([
+        { text: 'Cardiology', isClicked: false },
+        { text: 'Nutrition', isClicked: false },
+        { text: 'Oncology', isClicked: false },
+        { text: 'Neurology', isClicked: false },
+        { text: 'Dermatology', isClicked: false },
+        { text: 'Radiology', isClicked: false },
+      ]);
     
+
+    const buttonClass = isClicked ? style.buttonClicked : style.buttonUnclicked;
     
-    const handleDogClick = () => {
-      setIsDogClicked(!isDogClicked);
-    };
-    
-    const handleCatClick = () => {
-      setIsCatClicked(!isCatClicked);
-    };
 
-    const handleSmallClick = () => {
-        setIsSmallClicked(!isSmallClicked);
-    };
-
-    const handleBirdClick = () => {
-        setIsBirdClicked(!isBirdClicked);
-    };
-
-    const handleFishClick = () => {
-        setIsFishClicked(!isFishClicked);
-    };
-
-    const handleReptileClick = () => {
-        setIsReptileClicked(!isReptileClicked);
-    };
     
     return(
         <main>  
@@ -56,47 +59,52 @@ function Filter(){
                 <img src={CircleLogo} alt="Circle Logo" />
                 <p className={style.title}> Filters </p>
             </div>
+
             <div className={style.petTypes}>
-            <p> Pet Types </p>
-            <div className={style.petTypes2}>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleDogClick}>
-                    <img src={isDogClicked ? dog2 : dog} alt="Dog Icon" />
-                    <p>Dogs</p>
-                </button>
-                </div>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleCatClick}>
-                    <img src={isCatClicked ? cat2 : cat} alt="Cat Icon" />
-                    <p>Cats</p>
-                </button>
-                </div>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleSmallClick}>
-                    <img src={isSmallClicked ? small2 : small} alt="Small Animal Icon" />
-                    <p>Small Animals</p>
-                </button>
-                </div>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleBirdClick}>
-                    <img src={isBirdClicked ? bird2 : bird} alt="Bird Icon" />
-                    <p>Birds</p>
-                </button>
-                </div>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleFishClick}>
-                    <img src={isFishClicked ? fish2 : fish} alt="Fish Icon" />
-                    <p>Fish</p>
-                </button>
-                </div>
-                <div className={style.buttonContainer}>
-                <button className={style.dogButton} onClick={handleReptileClick}>
-                    <img src={isReptileClicked ? reptile2 : reptile} alt="Reptile Icon" />
-                    <p>Reptile</p>
-                </button>
+                <p> Pet Types </p>
+                <div className={style.petTypes2}>
+                {petTypeData.map((petType, index) => (
+                    <div className={style.buttonContainer}>
+                        <button 
+                        key={index}
+                        className={style.dogButton} 
+                        onClick={() => {
+                            const updatedPetTypeData = [...petTypeData]; // Make a copy of the array
+                            updatedPetTypeData[index].clicked = !updatedPetTypeData[index].clicked; // Toggle the isClicked state for the clicked button
+                            setPetTypeData(updatedPetTypeData); // Update the state variable with the new array
+                        }}>
+                        <img
+                        src={petType.clicked ? petType.icon.clicked : petType.icon.default}
+                        alt={`${petType.label} Icon`}
+                        style={{ transform: 'scale(0.8)' }}
+                        />
+                            <p>{petType.label}</p>
+                        </button>
+                    </div>
+                ))}
                 </div>
             </div>
-        </div>
+            <div className={style.specialty}>
+                <p> Specialty </p>
+                <div className={style.buttonContainer2}>
+                    {buttonsData.map((button, index) => (
+                        <button
+                        key={index}
+                        className={button.isClicked ? style.buttonClicked : style.buttonUnclicked}
+                        onClick={() => {
+                            const updatedButtonsData = [...buttonsData]; // Make a copy of the array
+                            updatedButtonsData[index].isClicked = !updatedButtonsData[index].isClicked; // Toggle the isClicked state for the clicked button
+                            setButtonsData(updatedButtonsData); // Update the state variable with the new array
+                        }}
+                        style={{ display: 'flex', alignItems: 'center' }}
+                        >
+                        {button.isClicked && <CheckIcon fontSize="small" />}
+                        {button.text}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        
 
         </main>
     );

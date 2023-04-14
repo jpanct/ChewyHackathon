@@ -18,12 +18,11 @@ main{
     font-size: 20px;
 }
 
-.petTypes{
+.petTypes {
     display: flex;
-    height: 20%;
+    height: auto;
     margin: 20px;
     flex-direction: column; 
-    background-color: pink;
 }
 
 .petTypes2{
@@ -51,16 +50,22 @@ main{
 
 .buttonContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 30%;
     margin: 10px;
-  }
+}
+
+.specialty{
+    width: 100%;
+    flex-wrap: wrap;
+}
   
-.buttonContainer p {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #333;
+
+.buttonContainer2 {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .text{
@@ -72,9 +77,31 @@ main{
     height: 20%;
     margin: 20px;
     flex-direction: column; 
-    background-color: red;
 }
 
 
+  .buttonUnclicked {
+    background-color: transparent;
+    border: 2px solid grey;;
+    color: grey;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: auto;
+    display: flex;
+
+  }
+  
+  .buttonClicked {
+    background-color: rgba(35, 73, 187, 0.3);;
+    border: 2px solid #2349BB;
+    color: #2349BB;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: auto;
+    display: flex;
+
+  }
 
 

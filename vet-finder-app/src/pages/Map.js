@@ -48,5 +48,3 @@ const Map = ()=>{
         </div>
     )
 }
-
-export default Map;
